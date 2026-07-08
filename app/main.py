@@ -7,11 +7,14 @@ from pathlib import Path
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
+from app.api.routes import router
+
 app = FastAPI(
     title="SnapID",
     description="Compliant passport, CNIC and visa photos — no photo shop needed.",
     version="0.1.0",
 )
+app.include_router(router)
 
 STATIC_DIR = Path(__file__).resolve().parent.parent / "static"
 
