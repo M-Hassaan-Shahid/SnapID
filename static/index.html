@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SnapID — Passport & CNIC photos, done right</title>
+<meta name="description" content="Compliant CNIC, passport and visa photos from a selfie. Auto crop, background fix, compliance check, print sheet. Free, no signup.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,900;1,400&family=Spline+Sans+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="logo"><span class="logo-frame">▣</span> SnapID</div>
+  <span class="top-note">Free · No signup · Photos auto-delete in 30 min</span>
+</header>
+
+<main>
+  <!-- STEP 1: pick document -->
+  <section class="step" id="stepSpec">
+    <div class="hero">
+      <h1>Passport &amp; CNIC photos,<br><span class="stamp-text">done right.</span></h1>
+      <p class="sub">Upload a selfie. We crop it to the official spec, fix the background,
+      run a compliance check, and hand you a print-ready sheet — all in your browser,
+      no photo shop.</p>
+    </div>
+    <h2 class="step-label">① Choose your document</h2>
+    <div class="spec-grid" id="specGrid"></div>
+  </section>
+
+  <!-- STEP 2: upload -->
+  <section class="step" id="stepUpload" hidden>
+    <button class="back" id="backToSpecs">← Change document</button>
+    <h2 class="step-label">② Add your photo <span class="chosen" id="chosenSpec"></span></h2>
+    <p class="spec-notes" id="specNotes"></p>
+    <div class="drop" id="drop">
+      <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" hidden>
+      <p class="drop-main">Drop a photo <span>or click to browse</span></p>
+      <p class="drop-hint">Front-facing, good light, plain-ish background helps.
+      Leave space above your head.</p>
+    </div>
+    <div class="paper-row">
+      <span>Print sheet:</span>
+      <label><input type="radio" name="paper" value="4x6" checked> 4×6″ photo paper</label>
+      <label><input type="radio" name="paper" value="a4"> A4</label>
+    </div>
+    <div class="status" id="status" hidden></div>
+  </section>
+
+  <!-- STEP 3: result -->
+  <section class="step" id="stepResult" hidden>
+    <button class="back" id="startOver">← Start over</button>
+    <h2 class="step-label">③ Your photo</h2>
+    <div class="result-grid">
+      <div class="photo-panel">
+        <div class="photo-frame"><img id="resultImg" alt="Your processed ID photo"></div>
+        <div class="dl-row">
+          <a class="btn primary" id="dlPhoto" download="snapid-photo.png">Download photo</a>
+          <a class="btn" id="dlSheet" download="snapid-print-sheet.pdf">Print sheet (PDF) <span id="copies"></span></a>
+        </div>
+      </div>
+      <div class="check-panel">
+        <h3>Compliance check</h3>
+        <ul class="checks" id="checkList"></ul>
+        <p class="verdict" id="verdict"></p>
+        <p class="fine-print">Automated pre-check based on published official guidelines —
+        always confirm current requirements with the issuing authority.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>SnapID runs the same checks a photo shop does: head size, eye line, centering,
+  background uniformity, print resolution. If a check fails you'll know before you print.</p>
+</footer>
+
+<script src="/app.js"></script>
+</body>
+</html>
